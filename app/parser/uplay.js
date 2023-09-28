@@ -7,7 +7,7 @@ const glob = require("fast-glob");
 const zip = require('adm-zip');
 const ffs = require('@xan105/fs');
 const regedit = require('regodit');
-const request = require('request-zero');
+const request = require('@xan105/request');
 const steamLanguages = require(path.join(appPath,"locale/steam.json"));
 
 const debug = new (require("@xan105/log"))({

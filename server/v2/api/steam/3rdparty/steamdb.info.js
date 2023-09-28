@@ -6,7 +6,7 @@ Which is basically how the SteamDB interfaces with the Steam network.
 Use the following method(s) with caution and as a last resort. 
 */
 
-import request from "request-zero";
+import request from "@xan105/request";
 import htmlParser from "node-html-parser";
 
 export default async function getDataFromSteamDB(appID){

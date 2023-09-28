@@ -29,7 +29,7 @@
     "express-validator": "^6.6.1",
     "helmet": "^4.1.1",
     "node-html-parser": "^1.2.20",
-    "request-zero": "^0.3.1",
+    "@xan105/request": "^0.3.1",
     "steam": "^1.4.1",
     "steam-binary-vdf": "^0.1.0",
     "steam-resources": "github:seishun/node-steam-resources",

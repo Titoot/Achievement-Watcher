@@ -2,7 +2,7 @@
 
 const util = require('util');
 const SteamID = require('steamid');
-const request = require('request-zero');
+const request = require('@xan105/request');
 
 module.exports = {
   to64 : function(userID){

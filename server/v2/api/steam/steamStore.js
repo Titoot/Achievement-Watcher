@@ -1,4 +1,4 @@
-import request from "request-zero";
+import request from "@xan105/request";
 import htmlParser from "node-html-parser";
 
 export async function getDataFromSteamStore(appID){

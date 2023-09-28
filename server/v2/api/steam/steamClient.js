@@ -4,7 +4,7 @@ import { promisify } from 'util';
 import Steam from "steam";
 import Schema from "steam-resources";
 import vdf from "@node-steam/vdf";
-import request from "request-zero";
+import request from "@xan105/request";
 import * as fs from "@xan105/fs";
 
 import { require } from "../../util/esm.js";

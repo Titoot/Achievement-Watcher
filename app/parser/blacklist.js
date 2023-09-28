@@ -2,7 +2,7 @@
 
 const remote = require('@electron/remote');
 const path = require("path");
-const request = require('request-zero');
+const request = require('@xan105/request');
 const ffs = require("@xan105/fs");
 const debug = new (require("@xan105/log"))({
   console: remote.getCurrentWindow().isDev || false,

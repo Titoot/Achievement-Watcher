@@ -1,5 +1,5 @@
 import path from "path";
-import request from "request-zero";
+import request from "@xan105/request";
 import * as fs from "@xan105/fs";
 
 import { require } from "../../../util/esm.js";

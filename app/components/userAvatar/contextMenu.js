@@ -2,7 +2,7 @@
 
 const remote = require('@electron/remote');
 const { Menu, MenuItem, nativeImage } = remote;
-const request = require('request-zero');
+const request = require('@xan105/request');
 
 const { selectFileDialog } = require("./selectFileDialog.js");
 const { getSteamPath, getSteamUsers } = require("../../parser/steam.js");
