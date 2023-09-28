@@ -3,7 +3,7 @@
 const path = require('path');
 const urlParser = require('url');
 const fs = require("@xan105/fs");
-const request = require('request-zero');
+const request = require('@xan105/request');
 const steamLang = require("./steam.json");
 
 module.exports.loadSteamData = async (appID, lang, key) => {
@@ -60,7 +60,7 @@ module.exports.fetchIcon = async (url,appID) => {
 
 function getSteamDataFromSRV(appID,lang){
 
-  const url = `https://api.xan105.com/steam/ach/${appID}?lang=${lang}`;
+  const url = `http://localhost/steam/ach/${appID}?lang=${lang}`;
   
   return new Promise((resolve, reject) => {
   

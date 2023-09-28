@@ -3,7 +3,7 @@
 const os = require('os');
 const path = require('path');
 const fs = require('@xan105/fs');
-const request = require('request-zero');
+const request = require('@xan105/request');
 const regedit = require('regodit');
 const WQL = require('wql-process-monitor');
 const humanizeDuration = require("humanize-duration");
@@ -171,7 +171,7 @@ async function getGameIndex(){
 			gameIndex = JSON.parse( await fs.readFile(filePath.cache,"utf8") );
 		} else {
 			try{
-				gameIndex = ( await request.getJson("https://api.xan105.com/v2/steam/gameindex") ).data;
+				gameIndex = ( await request.getJson("http://localhost/v2/steam/gameindex") ).data;
 				debug.log("[Playtime] gameIndex updated");
 				await fs.writeFile(filePath.cache,JSON.stringify(gameIndex),"utf8").catch((err)=>{debug.error(err)});
 			}catch(err){

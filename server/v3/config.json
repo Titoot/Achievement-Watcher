@@ -1,0 +1,15 @@
+{
+  "host": "127.0.0.1",
+  "port": 80,
+  "proxy": false,
+  "cors": true,
+  "rateLimit": {
+    "timeframe": 900000,
+    "maxRequest": 200
+  },
+  "folder": {
+    "log": "./log",
+    "temp": "./temp",
+    "cache": "./cache"
+  }
+}

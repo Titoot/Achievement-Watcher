@@ -3,7 +3,7 @@
 const path = require('path');
 const urlParser = require('url');
 const fs = require('@xan105/fs');
-const request = require('request-zero');
+const request = require('@xan105/request');
 
 const debug = require("../util/log.js");
 
