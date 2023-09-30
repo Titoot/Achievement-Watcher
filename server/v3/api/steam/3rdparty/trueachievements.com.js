@@ -35,7 +35,33 @@ export default async function getHiddenDescriptionFromCacheOrRemote(appID, gameN
       
       const url = `https://www.trueachievements.com/game/${name}/achievements`;
 
-      const { body } = await request(url);
+      let body;
+      body = await request(url).then(res=>res.body)
+      .catch(async (brr) =>{ // incase normal method fails
+        if(brr.code == 404)
+        {
+          let redirect = false;
+          const searchUrl = `https://www.trueachievements.com/searchresults.aspx?search=${encodeURIComponent(gameName)}`;
+          const searchBody = await request(searchUrl).then((res) => {
+              if(res.url.includes('/achievements'))
+              {
+                return res.body;
+              }
+              redirect = true;
+          });
+          if(redirect){ // another fail-safe method
+            const searchHtml = htmlParser.parse(searchBody);
+            const searchResultUrl = searchHtml.querySelectorAll('.gamerwide a').getAttribute('href').innerText;
+
+            return await request(searchResultUrl).then(res=>res.body);
+          }
+          return searchBody;
+        }
+        else
+        {
+          throw brr;
+        }
+      });
   
       const html = htmlParser.parse(body);
       
@@ -44,8 +70,6 @@ export default async function getHiddenDescriptionFromCacheOrRemote(appID, gameN
        
       result = [];
       const panels = html.querySelectorAll('.ach-panels');
-
-      if(!panels) throw "GAMENOTFOUND";
 
       for(const li of panels){
         for(const elem of li.querySelectorAll('li')){
