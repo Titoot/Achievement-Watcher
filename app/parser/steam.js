@@ -7,7 +7,7 @@ const normalize = require('normalize-path');
 const ini = require("@xan105/ini");
 const omit = require('lodash.omit');
 const moment = require('moment');
-const request = require('request-zero');
+const request = require('@xan105/request');
 const urlParser = require('url');
 const ffs = require("@xan105/fs");
 const regedit = require('regodit');
@@ -23,6 +23,7 @@ module.exports.scan = async (additionalSearch = []) => {
 
     let search = [
         path.join(process.env['Public'],"Documents/Steam/CODEX"), 
+        path.join(process.env['Public'],"Documents/Steam/RUNE"), 
         path.join(process.env['APPDATA'],"Goldberg SteamEmu Saves"),
         path.join(process.env['APPDATA'],"EMPRESS"),
         path.join(process.env['Public'],"EMPRESS"),
@@ -56,9 +57,11 @@ module.exports.scan = async (additionalSearch = []) => {
                 
                 if (dir.includes("CODEX")) {
                   game.source = "Codex";
+                } else if (dir.includes("RUNE")){
+                  game.source = "Rune";
                 } else if (dir.includes("Goldberg")){
                   game.source = "Goldberg";
-				} else if (dir.includes("EMPRESS")){
+                } else if (dir.includes("EMPRESS")){
                   game.source = "Goldberg (EMPRESS)";
                   game.data.path = path.join(game.data.path,"remote",game.appid);
                 } else if (dir.includes("SKIDROW")){
@@ -357,7 +360,7 @@ const getSteamUsers = module.exports.getSteamUsers = async (steamPath) => {
 
 function getSteamUserStatsFromSRV(user,appID) {
 
-  const url = `https://api.xan105.com/steam/user/${user}/stats/${appID}`;
+  const url = `http://localhost/steam/user/${user}/stats/${appID}`;
   
   return new Promise((resolve, reject) => {
   
@@ -395,7 +398,7 @@ async function getSteamUserStats(cfg) {
 
 function getSteamDataFromSRV(appID,lang){
 
-  const url = `https://api.xan105.com/steam/ach/${appID}?lang=${lang}`;
+  const url = `http://localhost/steam/ach/${appID}?lang=${lang}`;
   
   return new Promise((resolve, reject) => {
   

@@ -30,6 +30,10 @@ module.exports.getFolders = async (userDir_file) => {
       options: { recursive: true, filter: /([0-9]+)/, file: [files.achievement[0]] } 
     },
     { 
+      dir: path.join(process.env['Public'],"Documents/Steam/RUNE"), 
+      options: { recursive: true, filter: /([0-9]+)/, file: [files.achievement[0]] } 
+    },
+    { 
       dir: path.join(process.env['APPDATA'],"Steam/CODEX"), 
       options: { recursive: true, filter: /([0-9]+)/, file: [files.achievement[0]] } 
     },
