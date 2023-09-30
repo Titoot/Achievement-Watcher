@@ -34,7 +34,6 @@ if (config.cors) app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 
 for (let route of routes) app.use(route.endpoint, route.router);
-console.log(routes);
 
 //Start the server
 app.listen(config.port, config.host, () => { 
