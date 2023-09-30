@@ -58,7 +58,7 @@ export async function getRealAchName(percentData, percent){
   {
     for(const ach of percentData.achievementpercentages.achievements)
     {
-      if(`${ach.percent.toFixed(1)}%` === percent)
+      if(`${ach.percent.toFixed(1)}%` === percent || `${ach.percent.toFixed(1)-0.1}%` === percent)
       {
         return ach.name;
       

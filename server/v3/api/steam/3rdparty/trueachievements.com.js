@@ -30,7 +30,7 @@ export default async function getHiddenDescriptionFromCacheOrRemote(appID, gameN
     {
       
       console.log("> from remote");
-
+      gameName = gameName.replace(/[^\x20-\x7E]/g, '')
       const name = gameName.replace(':', '').replace(/\s+/g, '-')
       
       const url = `https://www.trueachievements.com/game/${name}/achievements`;
