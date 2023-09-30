@@ -48,19 +48,15 @@ export async function getDataFromSteamAPI(appID){
 
 }
 
-export async function getRealAchName(appID, percent){
+export async function getRealAchName(percentData, percent){
   
-  console.log("getProductInfo:" + appID);
+  console.log("getRealAchName");
   
-  if (!appID || !(Number.isInteger(appID) && appID > 0)) throw "EINVALIDAPPID";
+  if (!percentData || percentData.length <= 0) throw "EINVALIDJSONPERCENTDATA";
 
-  const url = `https://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=${appID}&format=json`;
-
-  const data = await request.getJson(url);
-
-  if(data) 
+  if(percentData) 
   {
-    for(const ach of data.achievementpercentages.achievements)
+    for(const ach of percentData.achievementpercentages.achievements)
     {
       if(`${ach.percent.toFixed(1)}%` === percent)
       {

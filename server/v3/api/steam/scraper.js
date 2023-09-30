@@ -18,6 +18,10 @@ export default async function getAchievementList(appID){
 
     result["gameName"] = html.querySelector('.profile_small_header_texture h1').innerText;
 
+    const percentUrl = `https://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=${appID}&format=json`;
+
+    const percentData = await request.getJson(percentUrl);
+
     for (const elem of html.querySelectorAll(".achieveRow")) {
         const name = elem.querySelector(".achieveTxt h3").innerText;
         const description = elem.querySelector(".achieveTxt h5").innerText;
@@ -27,7 +31,7 @@ export default async function getAchievementList(appID){
 
         result.push({
             displayName: name,
-            name: await steamAPI.getRealAchName(appID, percent),
+            name: await steamAPI.getRealAchName(percentData, percent),
             description: description,
             hidden: hidden,
             icon: icon,
