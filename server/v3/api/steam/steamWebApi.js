@@ -319,16 +319,16 @@ async function generateAchievementList(appID,lang = "english"){
        }catch{ //200900 / 'festivus' > no icon ?! (root url)
         delete achievements[i].icon;
        }
-       /*try{
-        achievements[i].icongray = achievements[i].icongray.match(/([^\\\/\:\*\?\"\<\>\|])+$/)[0].replace(".jpg","");
+       try{
+        achievements[i].icongray = achievements[i].icon;
       }catch{ //Some have none (hidden ach) or point to root url(403) eg: 692850
         delete achievements[i].icongray;
-      }*/
+      }
           
        try{
          if(achievements[i].hidden && !achievements[i].description && achievementstatsAPI) 
          {
-          achievements[i].description = achievementstatsAPI.find( ach => ach.apiName.toLowerCase() === achievements[i].name.toLowerCase())?.description || achievementstatsAPI[i].description;
+          achievements[i].description = achievementstatsAPI.find( ach => ach.apiName.toLowerCase() === achievements[i].displayName.toLowerCase())?.description || achievementstatsAPI[i].description;
          }
        }catch{/*Do nothing*/
         console.warn(`${achievements[i].name} no hidden desc found !`);
