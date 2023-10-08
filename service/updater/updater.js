@@ -8,7 +8,7 @@ const asar = require('asar-node').register();
 const tasklist = require('win-tasklist');
 const toast = require('powertoast');
 const balloon = require('powerballoon');
-const request = require('request-zero');
+const request = require('@xan105/request');
 const semver = require("./util/semver.js");
 const debug = new (require("@xan105/log"))({
   console: true,

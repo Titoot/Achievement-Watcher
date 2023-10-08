@@ -3,7 +3,9 @@
 const path = require("path");
 const fs = require("@xan105/fs");
 const userShellFolder = require("../util/userShellFolder.js");
-const videoCapture = require("@xan105/video-capture");
+import("@xan105/video-capture").then(module => {
+    const videoCapture = module;
+});
 const screenshot = require("@xan105/screenshot");
 const toast = require("./transport/toast.js");
 const balloon = require("powerballoon");
