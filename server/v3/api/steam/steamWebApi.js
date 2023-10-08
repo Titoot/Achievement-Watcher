@@ -206,12 +206,13 @@ async function generateSteamGameInfo(appID){
  
   let gameInfo = {appid : appID};
   
-  /*try{
-    const productInfo = await productInfoRequest(appID);
+  try{
+    //const productInfo = await productInfoRequest(appID);
 
-    gameInfo.name = productInfo.common.name;
-    gameInfo.binary = findBinary(productInfo.config.launch);
-    gameInfo.icon = productInfo.common.icon;
+    //gameInfo.name = productInfo.common.name;
+    //gameInfo.binary = findBinary(productInfo.config.launch);
+    gameInfo.binary = '';
+    //gameInfo.icon = productInfo.common.icon;
       
   }catch(err){
     
@@ -219,7 +220,7 @@ async function generateSteamGameInfo(appID){
     
 
     
-  }*/
+  }
   
   if (!gameInfo.name || !gameInfo.binary || !gameInfo.icon) 
   {
@@ -320,7 +321,7 @@ async function generateAchievementList(appID,lang = "english"){
         delete achievements[i].icon;
        }
        try{
-        achievements[i].icongray = achievements[i].icon;
+        achievements[i].icongray = achievements[i].icongray;
       }catch{ //Some have none (hidden ach) or point to root url(403) eg: 692850
         delete achievements[i].icongray;
       }

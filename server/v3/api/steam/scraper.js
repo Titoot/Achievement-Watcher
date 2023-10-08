@@ -8,7 +8,7 @@ export default async function getAchievementList(appID){
     
     if (!appID || !(Number.isInteger(appID) && appID > 0)) throw "EINVALIDAPPID";
     
-    const url = `https://steamcommunity.com/stats/${appID}/achievements/`;
+    const url = `https://steamhunters.com/apps/${appID}/achievements`;
     
     const { body } = await request(url);
     
@@ -16,26 +16,26 @@ export default async function getAchievementList(appID){
 
     let result = []
 
-    result["gameName"] = html.querySelector('.profile_small_header_texture h1').innerText;
+    result["gameName"] = html.querySelector('span.text-ellipsis.app-name.after').innerText;
 
-    const percentUrl = `https://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002/?gameid=${appID}&format=json`;
+    const scriptContent = html.querySelectorAll("script")[29].innerHTML;
+    const AchListMatch = scriptContent.match(/model:\s*({[\s\S].*}\]),.+?"page"/);
+    const AchList = AchListMatch ? AchListMatch[1] : null;
 
-    const percentData = await request.getJson(percentUrl);
+    if (!AchList) throw "ENOACHIEVEMENTLIST"
 
-    for (const elem of html.querySelectorAll(".achieveRow")) {
-        const name = elem.querySelector(".achieveTxt h3").innerText;
-        const description = elem.querySelector(".achieveTxt h5").innerText;
-        const hidden = description == '';
-        const icon = elem.querySelector(".achieveImgHolder img").getAttribute('src').match(/([^\\\/\:\*\?\"\<\>\|])+$/)[0].replace(".jpg","");
-        const percent = elem.querySelector(".achievePercent").innerText;
+    let AchData = JSON.parse(`${AchList}}}}`);
+    AchData = AchData.achievements.pagedList.items
 
+    for (const item of AchData) {
         result.push({
-            displayName: name,
-            name: await steamAPI.getRealAchName(percentData, percent),
-            description: description,
-            hidden: hidden,
-            icon: icon,
-            percent: percent
+            displayName: item.name,
+            name: item.apiName,
+            description: item.description,
+            hidden: item.hidden,
+            icon: item.icon,
+            icongray: item.iconGray,
+            percent: `${item.steamPercentage.toFixed(1)}%`
         });
     }
     
