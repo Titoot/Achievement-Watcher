@@ -1,11 +1,18 @@
+**⚠️ NB: The cache server was shutdown over a year ago.<br />
+You need a Steam Web API key for the app to be able to fetch data from Steam.<br />
+You can acquire one [by filling out this form](https://steamcommunity.com/dev/apikey).<br />
+Enter your key in `Settings > Advanced`.**
+
+<hr />
+
 A sexy achievement file parser with real-time notification, automatic screenshot and playtime tracking.<br />
 View every achievement earned on your PC whether it's coming from Steam, a Steam emulator, and more.<br />
 To see the full list of what this app can import please see the [**Wiki/Compatibility**](https://github.com/xan105/Achievement-Watcher/wiki/Compatibility).
 
 <table >
 <tr>
-<td align="left"><img src="https://github.com/xan105/Achievement-Watcher/raw/master/screenshot/home.png" width="400px"></td>
-<td align="left"><img src="https://github.com/xan105/Achievement-Watcher/raw/master/screenshot/ach_view.png" width="400px"></td>
+<td align="left"><img src="https://github.com/xan105/Achievement-Watcher/raw/1.x/screenshot/home.png" width="400px"></td>
+<td align="left"><img src="https://github.com/xan105/Achievement-Watcher/raw/1.x/screenshot/ach_view.png" width="400px"></td>
 </tr>
 </table>
 
@@ -38,7 +45,7 @@ You can test notification in Settings > Debug to make sure your system is correc
 There is a lot of things to check so make sure to have a look at the [wiki](https://github.com/xan105/Achievement-Watcher/wiki/Notification-%22Not-Working%22) before asking for help.
 
 <p align="center">
-  <img src="https://github.com/xan105/Achievement-Watcher/raw/master/screenshot/live.gif">
+  <img src="https://github.com/xan105/Achievement-Watcher/raw/1.x/screenshot/live.gif">
 </p>
 
 📸 If you have enabled the *souvenir* option(s) then a screenshot and/or video will be taken when you unlock an achievement.<br />
@@ -55,7 +62,7 @@ Translation Help
 I do my best to translate everything for every supported language by Steam, but it's rather difficult and I don't speak that much languages.<br />
 Fluent in another language ? Any help to add/modify/improve would be greatly appreciated.
 
-More details [here](https://github.com/xan105/achievement-watcher/tree/master/app/locale)
+More details [here](https://github.com/xan105/achievement-watcher/tree/1.x/app/locale)
 
 How to build
 ============

@@ -26,7 +26,7 @@ module.exports.scan = async (additionalSearch = []) => {
         path.join(process.env['Public'],"Documents/Steam/RUNE"), 
         path.join(process.env['APPDATA'],"Goldberg SteamEmu Saves"),
         path.join(process.env['APPDATA'],"EMPRESS"),
-        path.join(process.env['Public'],"EMPRESS"),
+        path.join(process.env['Public'],"Documents/EMPRESS"),
         path.join(process.env['APPDATA'],"Steam/CODEX"),
         path.join(process.env['PROGRAMDATA'],"Steam")+"/*",
         path.join(process.env['LOCALAPPDATA'],"SKIDROW"),
