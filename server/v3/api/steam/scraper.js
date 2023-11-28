@@ -25,7 +25,7 @@ export default async function getAchievementList(appID){
     if (!AchList) throw "ENOACHIEVEMENTLIST"
 
     let AchData = JSON.parse(`${AchList}}}}`);
-    AchData = AchData.achievements.pagedList.items
+    AchData = AchData.listData.pagedList.items
 
     for (const item of AchData) {
         result.push({
